@@ -24,3 +24,22 @@ client.connect((err) => {
         console.log("Ansluten till databas");
     }
 });
+
+// Skapa tabell
+client.query(`
+    DROP TABLE IF EXISTS courses;
+    CREATE TABLE courses(
+        id SERIAL PRIMARY KEY,
+        coursecode VARCHAR(8),
+        coursename VARCHAR(64),
+        syllabus VARCHAR(255),
+        progression VARCHAR(1),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )
+`, (err, res) => {
+    if (err) {
+        console.error("Fel vid skapande av tabell:", err.stack);
+    } else {
+        console.log("Tabellen skapad");
+    }
+});
