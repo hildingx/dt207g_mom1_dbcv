@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lägg till kurser</title>
+    <link rel="stylesheet" href="css/main.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Startsida</a></li>
+                <li><a href="/about">Om</a></li>
+                <li><a href="/add"  class="current">Lägg till kurser</a></li>
+            </ul>
+        </nav>
+    </header>
+    <h1>Lägg till kurser</h1>
+    <div class="form-container">
+        <form id="courseForm" method="post" action="/add">
+            <label for="code">Kurskod:</label>
+            <input type="text" id="code" name="code">
+            
+            <label for="name">Kursnamn:</label>
+            <input type="text" id="name" name="name">
+            
+            <label for="progression">Progression:</label>
+            <select id="progression" name="progression">
+                <option value="">Välj ett alternativ</option>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select>
+            
+            <label for="syllabus">Kursplan (URL):</label>
+            <input type="url" id="syllabus" name="syllabus">
+            
+            <button type="submit">Lägg till kurs</button>
+        </form>
+    </div>
+</body>
+</html>

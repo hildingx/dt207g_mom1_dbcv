@@ -37,16 +37,38 @@ client.connect((err) => {
 });
 
 //Routing
+//INDEX
 app.get("/", (req, res) => {
     res.render("index");
 });
 
+//ABOUT
 app.get("/about", (req, res) => {
     res.render("about");
 });
 
-app.get("/addcourses", (req, res) => {
-    res.render("addcourses");
+//ADD COURSE
+app.get("/add", (req, res) => {
+    res.render("add");
+});
+
+//Ta emot
+app.post("/add", async (req, res) => {
+    const { code, name, progression, syllabus } = req.body;
+
+    //Parameteranvändning vid infogning av data i databas
+    try {
+        const result = await client.query(`
+            INSERT INTO courses (coursecode, coursename, progression, syllabus)
+            VALUES ($1, $2, $3, $4)
+        `, [code, name, progression, syllabus]);
+
+        //Omdirigera användare till startsida
+        res.redirect('/');
+    } catch (err) {
+        console.error('Fel vid infogning i databasen:', err);
+        res.send('Ett fel uppstod');
+    }
 });
 
 //Starta server

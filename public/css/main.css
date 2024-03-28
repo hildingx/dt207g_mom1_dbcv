@@ -40,3 +40,14 @@ nav ul li a:hover {
 .current {
     color: #c7c7c7;
 }
+
+.form-container {
+    max-width: 600px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+#courseForm {
+    display: flex;
+    flex-direction: column;
+}
