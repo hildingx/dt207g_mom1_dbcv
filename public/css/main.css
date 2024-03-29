@@ -2,16 +2,19 @@ body {
     font-family: Arial, Helvetica, sans-serif;
     margin: 0;
     padding: 0;
-    color: rgb(94, 94, 94);
+    color: rgb(73, 73, 73);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
 }
 
 h1 {
     text-align: center;
+    margin-top: 100px;
 }
 
 header {
     background-color: #333;
-    color: #fff;
     padding: 10px 0;
 }
 
@@ -28,7 +31,7 @@ nav ul li {
 }
 
 nav ul li a {
-    color: white;
+    color: #c7c7c7;
     text-decoration: none;
     font-weight: bold;
 }
@@ -38,16 +41,113 @@ nav ul li a:hover {
 }
 
 .current {
-    color: #c7c7c7;
+    color: #fff;
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+main ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.course {
+    background-color: #dddddd;
+    width: 80%;
+    max-width: 400px;
+    margin: 0 auto 20px auto;
+    padding: 20px;
+    border-radius: 7px;
+    line-height: 1.8em;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.course p {
+    margin: 0;
+}
+
+.course a {
+    color: rgb(73, 73, 73);
+    text-decoration: underline;
+}
+
+.course form {
+    display: flex;
+    justify-content: end;
+}
+
+.course button,
+#courseForm button {
+    padding: 5px 10px;
+    font-size: 1rem;
+    border-radius: 4px;
+    max-width: 120px;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    background-color: #007bff;
+    color: #fff;
+    margin-top: 10px;
+}
+
+#courseForm button {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.course button:hover,
+#courseForm button:hover {
+    background-color: #006cdf;
 }
 
 .form-container {
-    max-width: 600px;
-    width: 80%;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 #courseForm {
     display: flex;
     flex-direction: column;
+    background-color: #dddddd;
+    color: rgb(73, 73, 73);
+    padding: 20px;
+    border-radius: 7px;
+    width: 400px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 10px;
+}
+
+#courseForm label {
+    margin-top: 10px;
+    display: block;
+}
+
+#courseForm input[type="text"],
+#courseForm input[type="url"],
+#courseForm select {
+    width: 100%;
+    padding: 8px;
+    margin-top: 5px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 7px;
+    box-sizing: border-box;
+}
+
+.about {
+    width: 80%;
+    max-width: 500px;
+    margin: 0 auto;
+    font-size: 1.2em;
+    line-height: 1.4em;
+}
+
+footer {
+    text-align: center;
+    margin-bottom: 25px;
 }

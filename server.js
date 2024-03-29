@@ -37,17 +37,22 @@ client.connect((err) => {
 });
 
 //Routing
-//INDEX
-app.get("/", (req, res) => {
-    res.render("index");
+app.get("/", async (req, res) => {
+    try {
+        //Hämta alla kurser från databas
+        const result = await client.query('SELECT * FROM courses');
+        const courses = result.rows;
+        res.render("index", { courses });
+    } catch (err) {
+        console.error('Fel vid hämtning från databasen:', err);
+        res.send('Ett fel uppstod vid hämtning av kursdata');
+    }
 });
 
-//ABOUT
 app.get("/about", (req, res) => {
     res.render("about");
 });
 
-//ADD COURSE
 app.get("/add", (req, res) => {
     res.render("add");
 });
@@ -56,7 +61,7 @@ app.get("/add", (req, res) => {
 app.post("/add", async (req, res) => {
     const { code, name, progression, syllabus } = req.body;
 
-    //Parameteranvändning vid infogning av data i databas
+    //Infoga ny kursdata i db tabell med parametriserade frågopr
     try {
         const result = await client.query(`
             INSERT INTO courses (coursecode, coursename, progression, syllabus)
@@ -68,6 +73,19 @@ app.post("/add", async (req, res) => {
     } catch (err) {
         console.error('Fel vid infogning i databasen:', err);
         res.send('Ett fel uppstod');
+    }
+});
+
+app.post("/delete/:id", async (req, res) => {
+    //Hämta specifikt id
+    const id = req.params.id;
+    //Ta bort kursdata från tabell med givet id
+    try {
+        await client.query('DELETE FROM courses WHERE id = $1', [id]);
+        res.redirect('/');
+    } catch (err) {
+        console.error('Fel vid borttagning från databasen:', err);
+        res.send('Ett fel uppstod vid borttagning av kurs');
     }
 });
 
