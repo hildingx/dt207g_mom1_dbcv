@@ -147,6 +147,13 @@ main ul {
     line-height: 1.4em;
 }
 
+.error {
+    margin-top: 20px;
+    color: rgb(222, 50, 50);
+    text-align: center;
+    font-weight: 700;
+}
+
 footer {
     text-align: center;
     margin-bottom: 25px;

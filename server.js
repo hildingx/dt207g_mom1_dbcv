@@ -61,6 +61,11 @@ app.get("/add", (req, res) => {
 app.post("/add", async (req, res) => {
     const { code, name, progression, syllabus } = req.body;
 
+    //Validera input så fält inte är tomma
+    if (!code.trim() || !name.trim() || !syllabus.trim()) {
+        return res.render('add', { error: 'Alla fält måste vara ifyllda.' });
+    }
+
     //Infoga ny kursdata i db tabell med parametriserade frågopr
     try {
         const result = await client.query(`

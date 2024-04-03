@@ -26,7 +26,7 @@
                     <p><strong>Kursnamn:</strong> <%= course.coursename %><br></p>
                     <p><strong>Progression:</strong> <%= course.progression %><br></p>
                     <p><strong>Kursplan:</strong> <a href="<%= course.syllabus %>">Länk</a></p>
-                    <p><form action="/delete/<%= course.id %>" method="POST"></p>
+                    <form action="/delete/<%= course.id %>" method="POST">
                         <button type="submit">Ta bort</button>
                     </form>
                 </li>

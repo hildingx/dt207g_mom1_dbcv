@@ -37,6 +37,9 @@
                 <input type="url" id="syllabus" name="syllabus" required>
                 
                 <button type="submit">Lägg till kurs</button>
+                <% if (typeof error !== 'undefined') { %>
+                    <p class="error"><%= error %></p>
+                <% } %>
             </form>
         </div>
     </main>
